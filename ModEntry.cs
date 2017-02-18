@@ -36,7 +36,7 @@ namespace StardewNotification
         private void ReceiveLoadedGame(object sender, EventArgs e)
         {
             // Check for new save
-            if (Game1.currentSeason.Equals(Contants.SPRING) && Game1.dayOfMonth == 0 && Game1.year == 1)
+            if (Game1.currentSeason.Equals(Constants.SPRING) && Game1.dayOfMonth == 0 && Game1.year == 1)
                 return;
 			generalNotification.DoNewDayNotifications();
 			harvestableNotification.CheckHarvestsAroundFarm();
@@ -61,7 +61,7 @@ namespace StardewNotification
 
         private void ReceiveCurrentLocationChanged(object sender, EventArgsCurrentLocationChanged e)
         {
-			if (!e.NewLocation.name.Equals(Contants.FARM) || Game1.timeOfDay == 2400) return;
+			if (!e.NewLocation.name.Equals(Constants.FARM) || Game1.timeOfDay == 2400) return;
 			productionNotification.CheckProductionAroundFarm();
         }
     }

@@ -15,67 +15,44 @@ namespace StardewNotification
 
 		public void CheckProductionAroundFarm()
 		{
-			foreach (var location in Game1.locations)
-			{
-				if (location.Name.Equals(Contants.FARM)) CheckFarmProductions(location);
-				else if (location.Name.Equals(Contants.SHED)) CheckShedProductions(location);
-				// else if (location.Name.Equals("Greenhouse")) CheckGreenhouseProductions(location);
-			}
+			CheckFarmProductions();
+			CheckShedProductions();
 		}
 
-		public void CheckFarmProductions(GameLocation farm)
+		public void CheckFarmProductions()
 		{
 			if (!Util.Config.notifyFarm) return;
-			var counter = new Dictionary<string, Pair<StardewValley.Object, int>>();
-			foreach (var pair in farm.objects)
-			{
-				var obj = pair.Value;
-				if (!obj.readyForHarvest) continue;
-				if (counter.ContainsKey(obj.name))
-					counter[obj.name].Second++;
-				else
-					counter.Add(obj.name, new Pair<StardewValley.Object, int>(obj, 1));
-			}
-			foreach (var pair in counter)
-			{
-				Util.ShowHarvestableMessage(pair);
-			}
+			CheckObjectsInLocation(Game1.getLocationFromName(Constants.FARM));
 		}
 
-		public void CheckShedProductions(GameLocation location)
+		public void CheckShedProductions()
 		{
-			if (!Util.Config.notifyShed || !(location is StardewValley.Locations.BuildableGameLocation)) return;
-			foreach (var building in (location as StardewValley.Locations.BuildableGameLocation).buildings)
-			{
-				if (!(building.indoors is Shed)) continue;
-				var counter = new Dictionary<string, Pair<StardewValley.Object, int>>();
-				foreach (var pair in building.indoors.Objects)
-				{
-					if (!pair.Value.readyForHarvest) continue;
-					if (counter.ContainsKey(pair.Value.name))
-						counter[pair.Value.name].Second++;
-					else
-						counter.Add(pair.Value.name, new Pair<StardewValley.Object, int>(pair.Value, 1));
-				}
-				foreach (var pair in counter)
-				{
-					Util.ShowHarvestableMessage(pair);
-				}
-			}
+			if (!Util.Config.notifyShed) return;
+			CheckObjectsInLocation(Game1.getLocationFromName(Constants.SHED));
 		}
 
-		public void CheckGreenhouseProductions(GameLocation greenHouse)
+		public void CheckGreenhouseProductions()
 		{
 			// if (!Util.Config.notifyGreenhouse) return;
-			foreach (var obj in greenHouse.objects)
-			{
-				//TODO: Greenhouse
-			}
+			//TODO: Greenhouse
 		}
 
 		public void CheckCellarProductions(GameLocation cellar)
 		{
 			//TODO: Cellar
+		}
+
+		private void CheckObjectsInLocation(GameLocation location)
+		{
+			var counter = new Dictionary<string, Pair<StardewValley.Object, int>>();
+			foreach (var pair in location.Objects)
+			{
+				if (!pair.Value.readyForHarvest) continue;
+				if (counter.ContainsKey(pair.Value.Name)) counter[pair.Value.Name].Second++;
+				else counter.Add(pair.Value.Name, new Pair<StardewValley.Object, int>(pair.Value, 1));
+			}
+			foreach (var pair in counter)
+				Util.ShowHarvestableMessage(pair);
 		}
 	}
 }

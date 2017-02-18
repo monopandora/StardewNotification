@@ -24,7 +24,7 @@ namespace StardewNotification
         public static void ShowHarvestableMessage(KeyValuePair<string, Pair<StardewValley.Object, int>> pair)
         {
             var item = CopyObject(pair.Value.First);
-            item.name = string.Format(Contants.READY_FOR_HARVEST, pair.Key);
+            item.name = string.Format(Constants.READY_FOR_HARVEST, pair.Key);
             item.bigCraftable = pair.Value.First.bigCraftable;
             Game1.addHUDMessage(new HUDMessage(pair.Key, pair.Value.Second, true, Color.OrangeRed, item));
         }
@@ -34,7 +34,7 @@ namespace StardewNotification
             var e = location.Objects.GetEnumerator();
             e.MoveNext();
             var item = CopyObject(e.Current.Value);
-            item.name = Game1.player.caveChoice == MUSHROOM_CAVE ? Contants.CAVE_MUSHROOM : Contants.CAVE_FRUIT;
+            item.name = Game1.player.caveChoice == MUSHROOM_CAVE ? Constants.CAVE_MUSHROOM : Constants.CAVE_FRUIT;
             Game1.addHUDMessage(new HUDMessage(item.type, location.Objects.Count, true, Color.OrangeRed, item));
         }
 

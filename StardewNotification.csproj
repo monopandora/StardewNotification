@@ -39,7 +39,7 @@
     <Compile Include="ModEntry.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="HarvestNotification.cs" />
-    <Compile Include="Contants.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="GeneralNotification.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Debug.cs" />

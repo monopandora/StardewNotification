@@ -16,10 +16,7 @@ namespace StardewNotification
 		public void CheckHarvestsAroundFarm()
 		{
 			CheckSeasonalHarvests();
-			foreach (GameLocation location in Game1.locations)
-			{
-				if (location.Name.Equals(Contants.FARMCAVE)) CheckFarmCaveHarvests(location);
-			}
+			CheckFarmCaveHarvests(Game1.getLocationFromName(Constants.FARMCAVE));
 		}
 
 		public void CheckFarmCaveHarvests(GameLocation farmcave)
@@ -48,14 +45,14 @@ namespace StardewNotification
 			var dayOfMonth = Game1.dayOfMonth;
 			switch (Game1.currentSeason)
 			{
-				case Contants.SPRING:
-					if (dayOfMonth > 14 && dayOfMonth < 19) seasonal = Contants.SALMONBERRY;
+				case Constants.SPRING:
+					if (dayOfMonth > 14 && dayOfMonth < 19) seasonal = Constants.SALMONBERRY;
 					break;
-				case Contants.SUMMER:
-					if (dayOfMonth > 11 && dayOfMonth < 15) seasonal = Contants.SEASHELLS;
+				case Constants.SUMMER:
+					if (dayOfMonth > 11 && dayOfMonth < 15) seasonal = Constants.SEASHELLS;
 					break;
-				case Contants.FALL:
-					if (dayOfMonth > 7 && dayOfMonth < 12) seasonal = Contants.BLACKBERRY;
+				case Constants.FALL:
+					if (dayOfMonth > 7 && dayOfMonth < 12) seasonal = Constants.BLACKBERRY;
 					break;
 				default:
 					break;

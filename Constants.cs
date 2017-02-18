@@ -1,7 +1,7 @@
 ﻿using System;
 namespace StardewNotification
 {
-	public static class Contants
+	public static class Constants
 	{
 		public const string MON = "Mon";
 		public const string SUN = "Sun";
