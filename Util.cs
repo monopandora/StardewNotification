@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace StardewNotification
 {
-    public class Util
+    public static class Util
     {
         public static Configuration Config { get; set; }
 		public static IMonitor Monitor { get; set; }
@@ -16,7 +16,7 @@ namespace StardewNotification
 
         public static void showMessage(string msg)
         {
-            HUDMessage hudmsg = new HUDMessage(msg, Color.SeaGreen, 5250f, true);
+            var hudmsg = new HUDMessage(msg, Color.SeaGreen, 5250f, true);
             hudmsg.whatType = 2;
             Game1.addHUDMessage(hudmsg);
         }
@@ -24,7 +24,7 @@ namespace StardewNotification
         public static void ShowHarvestableMessage(KeyValuePair<string, Pair<StardewValley.Object, int>> pair)
         {
             var item = CopyObject(pair.Value.First);
-            item.name = string.Format(Message.READY_FOR_HARVEST, pair.Key);
+            item.name = string.Format(Contants.READY_FOR_HARVEST, pair.Key);
             item.bigCraftable = pair.Value.First.bigCraftable;
             Game1.addHUDMessage(new HUDMessage(pair.Key, pair.Value.Second, true, Color.OrangeRed, item));
         }
@@ -34,7 +34,7 @@ namespace StardewNotification
             var e = location.Objects.GetEnumerator();
             e.MoveNext();
             var item = CopyObject(e.Current.Value);
-            item.name = Game1.player.caveChoice == MUSHROOM_CAVE ? Message.CAVE_MUSHROOM : Message.CAVE_FRUIT;
+            item.name = Game1.player.caveChoice == MUSHROOM_CAVE ? Contants.CAVE_MUSHROOM : Contants.CAVE_FRUIT;
             Game1.addHUDMessage(new HUDMessage(item.type, location.Objects.Count, true, Color.OrangeRed, item));
         }
 

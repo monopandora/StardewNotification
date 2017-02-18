@@ -1,7 +1,8 @@
-﻿1.5
-Adds notifications for production equipments around the farm
+﻿1.5.1
+Adds missing configuration options
 
-1.4.2
+1.5
+Adds notifications for production equipments around the farm
 Fix bug where notifications were showing up during end of day cutscenes
 
 1.4.1

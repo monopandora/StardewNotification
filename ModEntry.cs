@@ -12,20 +12,19 @@ namespace StardewNotification
     /// <summary>
     /// The mod entry point
     /// </summary>
-    // TODO: Beach notifications
-	// TODO: Cellar notifications
-	// TODO: Greenhouse notifications
     class ModEntry : Mod
     {
-		private HarvestableNotification harvestableNotification;
+		private HarvestNotification harvestableNotification;
 		private GeneralNotification generalNotification;
+		private ProductionNotification productionNotification;
 
         public override void Entry(IModHelper helper)
         {
             Util.Config = helper.ReadConfig<Configuration>();
 			Util.Monitor = Monitor;
-			harvestableNotification = new HarvestableNotification();
+			harvestableNotification = new HarvestNotification();
 			generalNotification = new GeneralNotification();
+			productionNotification = new ProductionNotification();
 
 			#pragma warning disable 0618
             PlayerEvents.LoadedGame += ReceiveLoadedGame;
@@ -37,20 +36,10 @@ namespace StardewNotification
         private void ReceiveLoadedGame(object sender, EventArgs e)
         {
             // Check for new save
-            if (Game1.currentSeason.Equals(Message.SPRING) && Game1.dayOfMonth == 0 && Game1.year == 1)
+            if (Game1.currentSeason.Equals(Contants.SPRING) && Game1.dayOfMonth == 0 && Game1.year == 1)
                 return;
-
-			/*
-			Debug.printMailReceived();
-			Debug.printMailForTomorrow();
-			Debug.printPlayerEventsSeen();
-			if (!Game1.player.mailForTomorrow.Contains("ccPantry"))
-			{
-				Game1.player.mailForTomorrow.Add("ccPantry");
-			}
-			*/
-
 			generalNotification.DoNewDayNotifications();
+			harvestableNotification.CheckHarvestsAroundFarm();
         }
 
         private void ReceiveMenuClosed(object sender, EventArgsClickableMenuClosed e)
@@ -60,6 +49,7 @@ namespace StardewNotification
                 e.PriorMenu.GetType() == typeof(StardewValley.Menus.SaveGameMenu))
             {
 				generalNotification.DoNewDayNotifications();
+				harvestableNotification.CheckHarvestsAroundFarm();
             }
         }
 
@@ -71,9 +61,8 @@ namespace StardewNotification
 
         private void ReceiveCurrentLocationChanged(object sender, EventArgsCurrentLocationChanged e)
         {
-			if (!e.NewLocation.name.Equals(Message.FARM) || Game1.timeOfDay == 2400) return;
-			harvestableNotification.DoFarmHarvestables(e.NewLocation);
-			harvestableNotification.DoFarmBuildingHarvestables();
+			if (!e.NewLocation.name.Equals(Contants.FARM) || Game1.timeOfDay == 2400) return;
+			productionNotification.CheckProductionAroundFarm();
         }
     }
 }

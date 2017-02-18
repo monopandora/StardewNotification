@@ -1,7 +1,7 @@
 ﻿using System;
 namespace StardewNotification
 {
-	public static class Message
+	public static class Contants
 	{
 		public const string MON = "Mon";
 		public const string SUN = "Sun";
@@ -40,6 +40,9 @@ namespace StardewNotification
 		public const string CAVE_FRUIT = "Cave Fruits ready for harvest";
 
 		public const string FARM = "Farm";
+		public const string SHED = "Shed";
+		public const string GREENHOUSE = "Greenhouse";
+		public const string CELLAR = "Cellar";
 
 		public const string BIRTHDAY = "{0}'s birthday!";
 		public const string BIRTHDAY_REMINDER = "Don't forget to give {0} a birthday gift today!";
