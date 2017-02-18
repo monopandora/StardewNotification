@@ -1,5 +1,2 @@
 bin/
 obj/
-*.csproj.user
-Properties/
-packages.config
