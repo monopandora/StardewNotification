@@ -17,6 +17,7 @@ namespace StardewNotification
 		{
 			CheckFarmProductions();
 			CheckShedProductions();
+			CheckGreenhouseProductions();
 		}
 
 		public void CheckFarmProductions()
@@ -28,19 +29,30 @@ namespace StardewNotification
 		public void CheckShedProductions()
 		{
 			if (!Util.Config.notifyShed) return;
-			CheckObjectsInLocation(Game1.getLocationFromName(Constants.SHED));
+			foreach (var location in Game1.locations)
+			{
+				if (!location.Name.Equals(Constants.FARM)) continue;
+				foreach (var building in (location as StardewValley.Locations.BuildableGameLocation).buildings)
+				{
+					if (!building.nameOfIndoorsWithoutUnique.Equals(Constants.SHED)) continue;
+					CheckObjectsInLocation(building.indoors);
+				}
+			}
 		}
 
 		public void CheckGreenhouseProductions()
 		{
-			// if (!Util.Config.notifyGreenhouse) return;
-			//TODO: Greenhouse
+			if (!Util.Config.notifyGreenhouse) return;
+			CheckObjectsInLocation(Game1.getLocationFromName(Constants.GREENHOUSE));
 		}
 
+		/*
 		public void CheckCellarProductions(GameLocation cellar)
 		{
-			//TODO: Cellar
+			if (!Util.Config.notifyCellar) return;
+			CheckObjectsInLocation(Game1.getLocationFromName(Constants.CELLAR));
 		}
+		*/
 
 		private void CheckObjectsInLocation(GameLocation location)
 		{

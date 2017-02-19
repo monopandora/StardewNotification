@@ -62,10 +62,5 @@ namespace StardewNotification
 				Util.showMessage($"{seasonal}");
 			}
 		}
-
-		public void CheckBeachHarvests()
-		{
-			//TODO: Beach
-		}
 	}
 }
