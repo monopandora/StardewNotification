@@ -1,10 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProductionNotification.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HarvestNotification.cs">
     <Files>
-      <File FileName="ProductionNotification.cs" Line="48" Column="3" />
-      <File FileName="ModEntry.cs" Line="61" Column="3" />
+      <File FileName="ProductionNotification.cs" Line="55" Column="5" />
+      <File FileName="ModEntry.cs" Line="52" Column="19" />
       <File FileName="Debug.cs" Line="49" Column="4" />
-      <File FileName="Configuration.cs" Line="23" Column="49" />
+      <File FileName="Configuration.cs" Line="23" Column="5" />
+      <File FileName="Changelog.txt" Line="3" Column="1" />
+      <File FileName="HarvestNotification.cs" Line="19" Column="73" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

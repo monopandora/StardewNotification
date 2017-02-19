@@ -16,6 +16,10 @@ namespace StardewNotification
 		public void CheckHarvestsAroundFarm()
 		{
 			CheckSeasonalHarvests();
+		}
+
+		public void CheckFarmCaveHarvests()
+		{
 			CheckFarmCaveHarvests(Game1.getLocationFromName(Constants.FARMCAVE));
 		}
 
