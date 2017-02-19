@@ -18,6 +18,7 @@ namespace StardewNotification
 			CheckFarmProductions();
 			CheckShedProductions();
 			CheckGreenhouseProductions();
+			CheckCellarProductions();
 		}
 
 		public void CheckFarmProductions()
@@ -46,13 +47,11 @@ namespace StardewNotification
 			CheckObjectsInLocation(Game1.getLocationFromName(Constants.GREENHOUSE));
 		}
 
-		/*
-		public void CheckCellarProductions(GameLocation cellar)
+		public void CheckCellarProductions()
 		{
 			if (!Util.Config.notifyCellar) return;
 			CheckObjectsInLocation(Game1.getLocationFromName(Constants.CELLAR));
 		}
-		*/
 
 		private void CheckObjectsInLocation(GameLocation location)
 		{

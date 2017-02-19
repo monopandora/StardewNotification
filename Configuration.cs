@@ -20,6 +20,6 @@
         public bool notifyShed { get; set; } = true;
 		public bool notifyFarm { get; set; } = true;
 		public bool notifyGreenhouse { get; set; } = true;
-		//public bool notifyCellar { get; set; } = true;
+		public bool notifyCellar { get; set; } = true;
     }
 }

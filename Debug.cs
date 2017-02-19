@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using StardewValley;
 using StardewModdingAPI;
@@ -7,7 +8,7 @@ namespace StardewNotification
 {
 	public static class Debug
 	{
-		public static bool DEBUG = true;
+		public static bool DEBUG = false;
 
 		public static void PrintMailForTomorrow()
 		{
@@ -46,6 +47,14 @@ namespace StardewNotification
 			{
 				Util.Monitor.Log(string.Format("Location: {0}", location.Name), LogLevel.Info);
 			}
+		}
+
+		public static void setCaskReady()
+		{
+			if (!DEBUG) return;
+			GameLocation location = Game1.getLocationFromName(Constants.CELLAR);
+			foreach (var pair in location.Objects)
+				pair.Value.readyForHarvest = true;
 		}
 	}
 }
