@@ -18,9 +18,10 @@ namespace StardewNotification
 			CheckSeasonalHarvests();
 		}
 
-		public void CheckFarmCaveHarvests()
+		public void CheckHarvestsOnFarm()
 		{
 			CheckFarmCaveHarvests(Game1.getLocationFromName(Constants.FARMCAVE));
+			CheckGreenhouseCrops(Game1.getLocationFromName(Constants.GREENHOUSE));
 		}
 
 		public void CheckFarmCaveHarvests(GameLocation farmcave)
@@ -64,6 +65,22 @@ namespace StardewNotification
 			if (!ReferenceEquals(seasonal, null))
 			{
 				Util.showMessage($"{seasonal}");
+			}
+		}
+
+		public void CheckGreenhouseCrops(GameLocation greenhouse)
+		{
+			if (!Util.Config.notifyGreenhouseCrops) return;
+			//var counter = new Dictionary<string, Pair<StardewValley.TerrainFeatures.HoeDirt, int>>();
+			foreach (var pair in greenhouse.terrainFeatures)
+			{
+				if (pair.Value is StardewValley.TerrainFeatures.HoeDirt)
+				{
+					var hoeDirt = (StardewValley.TerrainFeatures.HoeDirt)pair.Value;
+					if (!hoeDirt.readyForHarvest()) continue;
+					Util.showMessage(Constants.GREENHOUSE_CROPS);
+					break;
+				}
 			}
 		}
 	}

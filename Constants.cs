@@ -42,6 +42,7 @@ namespace StardewNotification
 		public const string FARM = "Farm";
 		public const string SHED = "Shed";
 		public const string GREENHOUSE = "Greenhouse";
+
 		public const string CELLAR = "Cellar";
 
 		public const string BIRTHDAY = "{0}'s birthday!";
@@ -50,5 +51,6 @@ namespace StardewNotification
 		public const string TOOL_PICKUP = "{0} is ready for pickup";
 
 		public const string READY_FOR_HARVEST = "{0} ready for harvest";
+		public const string GREENHOUSE_CROPS = "Greenhouse crops ready for harvest";
 	}
 }

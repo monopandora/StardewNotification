@@ -1,4 +1,7 @@
-﻿1.6
+﻿1.7
+Adds Greenhouse crops notification
+
+1.6
 Adds Greenhouse production notifications
 Adds Cellar production notifications
 

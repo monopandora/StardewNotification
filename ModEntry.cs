@@ -62,7 +62,7 @@ namespace StardewNotification
         private void ReceiveCurrentLocationChanged(object sender, EventArgsCurrentLocationChanged e)
         {
 			if (!e.NewLocation.name.Equals(Constants.FARM) || Game1.timeOfDay == 2400) return;
-			harvestableNotification.CheckFarmCaveHarvests();
+			harvestableNotification.CheckHarvestsOnFarm();
 			productionNotification.CheckProductionAroundFarm();
         }
     }

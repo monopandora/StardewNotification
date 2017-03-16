@@ -15,6 +15,7 @@
 
 		// Harvest Notifications
 		public bool notifyFarmCave { get; set; } = true;
+		public bool notifyGreenhouseCrops { get; set; } = true;
 
 		// Production Notifications
         public bool notifyShed { get; set; } = true;
