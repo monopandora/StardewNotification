@@ -1,6 +1,7 @@
 ﻿using System;
 
 using StardewValley;
+using StardewValley.Locations;
 
 namespace StardewNotification
 {
@@ -36,7 +37,12 @@ namespace StardewNotification
 
         private void CheckForTravelingMerchant()
         {
-            if (!Util.Config.notifyTravelingMerchant || Game1.dayOfMonth % 7 % 5 != 0) return;
+            Forest f = Game1.getLocationFromName("Forest") as Forest;
+            if (!Util.Config.notifyTravelingMerchant ||f.travelingMerchantDay)
+            {
+                return;
+            }
+
             Util.showMessage(Constants.TRAVELING_MERCHANT);
         }
 

@@ -26,9 +26,9 @@ namespace StardewNotification
 			generalNotification = new GeneralNotification();
 			productionNotification = new ProductionNotification();
 
-			#pragma warning disable 0618
-            PlayerEvents.LoadedGame += ReceiveLoadedGame;
-            MenuEvents.MenuClosed += ReceiveMenuClosed;
+            SaveEvents.AfterLoad += ReceiveLoadedGame;
+            //MenuEvents.MenuClosed += ReceiveMenuClosed;
+            TimeEvents.AfterDayStarted += DailyNotifications;
             TimeEvents.TimeOfDayChanged += ReceiveTimeOfDayChanged;
             LocationEvents.CurrentLocationChanged += ReceiveCurrentLocationChanged;
         }
@@ -42,15 +42,10 @@ namespace StardewNotification
 			harvestableNotification.CheckHarvestsAroundFarm();
         }
 
-        private void ReceiveMenuClosed(object sender, EventArgsClickableMenuClosed e)
+        private void DailyNotifications(object sender, EventArgs e)
         {
-            if (e.PriorMenu.GetType() == typeof(StardewValley.Menus.ShippingMenu) ||
-                e.PriorMenu.GetType() == typeof(StardewValley.Menus.LevelUpMenu) ||
-                e.PriorMenu.GetType() == typeof(StardewValley.Menus.SaveGameMenu))
-            {
-				generalNotification.DoNewDayNotifications();
-				harvestableNotification.CheckHarvestsAroundFarm();
-            }
+			generalNotification.DoNewDayNotifications();
+			harvestableNotification.CheckHarvestsAroundFarm();
         }
 
         private void ReceiveTimeOfDayChanged(object sender, EventArgsIntChanged e)
