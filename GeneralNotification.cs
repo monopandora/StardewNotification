@@ -38,7 +38,7 @@ namespace StardewNotification
         private void CheckForTravelingMerchant()
         {
             Forest f = Game1.getLocationFromName("Forest") as Forest;
-            if (!Util.Config.notifyTravelingMerchant ||f.travelingMerchantDay)
+            if (!Util.Config.notifyTravelingMerchant || !f.travelingMerchantDay)
             {
                 return;
             }
