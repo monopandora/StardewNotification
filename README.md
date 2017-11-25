@@ -1,6 +1,8 @@
 # StardewNotification
 StardewNotification is a mod for the game [Stardew Valley](http://store.steampowered.com/app/413150/). The mod shows notification messages for different events that occur throughout the game.
 
+This repo is for a maintained fork of the base mod.
+
 ### Features
 - birthdays
 - reminds you to give a birthday present if you haven't at 5:00pm (time can be customized)
